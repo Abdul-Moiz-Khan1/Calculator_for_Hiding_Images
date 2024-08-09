@@ -14,9 +14,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val code = findViewById<EditText>(R.id.editTextText).toString()
         val btn = findViewById<Button>(R.id.button)
         btn.setOnClickListener{
+            val code = findViewById<EditText>(R.id.editTextText).text.toString()
             if(code.equals("1313")){
                 startActivity(Intent(this,hidden_images::class.java))
             }else{
