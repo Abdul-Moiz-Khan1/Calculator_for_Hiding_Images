@@ -40,6 +40,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation(libs.glide)
     implementation(libs.bcprov.jdk15to18)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
