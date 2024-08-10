@@ -73,7 +73,9 @@ class hidden_images : AppCompatActivity() {
 
         }
         unhide.setOnClickListener{
-
+            val intent =Intent(this , show_images::class.java)
+            intent.putParcelableArrayListExtra("uri_list" , uri_list)
+            startActivity(intent)
         }
 
     }
@@ -177,7 +179,6 @@ class hidden_images : AppCompatActivity() {
             }
 
     }
-
 
 
 }
