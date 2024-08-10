@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.ContentResolver
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -18,44 +20,64 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.documentfile.provider.DocumentFile
+import org.bouncycastle.jce.provider.BouncyCastleProvider
 import java.io.File
 import java.io.FileOutputStream
 import java.lang.reflect.Array
 import java.net.URI
 import java.nio.file.Files
+import java.security.SecureRandom
+import java.security.Security
 import javax.crypto.Cipher
 import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
+import javax.crypto.spec.IvParameterSpec
 
 class hidden_images : AppCompatActivity() {
+
+
     private lateinit var permissionlauncher:ActivityResultLauncher<kotlin.Array<String>>
     private var read_permission: Boolean = false
     private var write_permission: Boolean = false
     private lateinit var select: Button
     private var fetched:Boolean = false
     private var uri_list:ArrayList<Uri> = ArrayList()
+    private lateinit var secretKey:SecretKey
+    private lateinit var iv:ByteArray
+    private lateinit var dec_image:Bitmap
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hidden_images)
+        Security.addProvider(BouncyCastleProvider())
 
+        val temp_image_uri:Uri = ("content://com.android.providers.media.documents/document/image%3A65").toUri()
         permissionlauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()){
             read_permission = it[android.Manifest.permission.READ_EXTERNAL_STORAGE] ?: read_permission
             write_permission = it[android.Manifest.permission.READ_EXTERNAL_STORAGE] ?: write_permission
         }
 
         select = findViewById(R.id.button2)
-        val key = generatekey()
-//        encrypt_images()
-//        save_image()
 
         check_permissions()
         select_images()
 
+        val hide = findViewById<Button>(R.id.encrpyt)
+        val unhide = findViewById<Button>(R.id.decrypt)
+
+        hide.setOnClickListener{
+            hide_images()
+
+        }
+        unhide.setOnClickListener{
+
+        }
 
     }
+
 
     private fun select_images():Boolean {
         if (ContextCompat.checkSelfPermission(
@@ -81,7 +103,6 @@ class hidden_images : AppCompatActivity() {
     return true
     }
 
-
     private fun check_permissions() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -95,9 +116,6 @@ class hidden_images : AppCompatActivity() {
 
 
         val permissionRequest:MutableList<String> = ArrayList()
-//        if(!read_permission){
-//            permissionRequest.add(android.Manifest.permission.READ_EXTERNAL_STORAGE)
-//        }
         if(!write_permission){
             permissionRequest.add(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
         }
@@ -105,42 +123,6 @@ class hidden_images : AppCompatActivity() {
             permissionlauncher.launch(permissionRequest.toTypedArray())
         }
 
-//
-//        if ((ContextCompat.checkSelfPermission(
-//                this,
-//                android.Manifest.permission.READ_EXTERNAL_STORAGE
-//            ) == PackageManager.PERMISSION_GRANTED) && (ContextCompat.checkSelfPermission(
-//                this,
-//                android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-//            ) == PackageManager.PERMISSION_GRANTED)
-//        ) {
-//            read_permission = true
-//            write_permission = true
-//        } else {
-//            check_permissions()
-//        }
-
-
-    }
-
-    private fun save_image(encryptedimage: ByteArray, outputfile: File) {
-        outputfile.writeBytes(encryptedimage)
-
-    }
-
-    private fun encrypt_images(image: File, secretKey: SecretKey): ByteArray {
-        val cipher = Cipher.getInstance("AES")
-        cipher.init(Cipher.ENCRYPT_MODE, secretKey)
-        val imagebytes = Files.readAllBytes(image.toPath())
-        return cipher.doFinal(imagebytes)
-
-
-    }
-
-    private fun generatekey(): SecretKey {
-        val keyGenerator = KeyGenerator.getInstance("AES")
-        keyGenerator.init(256)
-        return keyGenerator.generateKey()
     }
 
     @Deprecated("This method has been deprecated in favor of using the Activity Result API\n      which brings increased type safety via an {@link ActivityResultContract} and the prebuilt\n      contracts for common intents available in\n      {@link androidx.activity.result.contract.ActivityResultContracts}, provides hooks for\n      testing, and allow receiving results in separate, testable classes independent from your\n      activity. Use\n      {@link #registerForActivityResult(ActivityResultContract, ActivityResultCallback)}\n      with the appropriate {@link ActivityResultContract} and handling the result in the\n      {@link ActivityResultCallback#onActivityResult(Object) callback}.")
@@ -154,9 +136,6 @@ class hidden_images : AppCompatActivity() {
                     for (i in 0 until clip.itemCount) {
                         Log.d("uris", clip.getItemAt(i).uri.toString())
                         uri_list.add(clip.getItemAt(i).uri)
-                        if(uri_list.size == clip.itemCount){
-                            hide_images()
-                        }
                     }
                     Log.d("count?", clip.itemCount.toString())
                 } else {
@@ -186,7 +165,8 @@ class hidden_images : AppCompatActivity() {
                         output->
                         input?.copyTo(output)
                         try{
-                            DocumentFile.fromSingleUri(this, uri_list[i])
+
+                            DocumentFile.fromSingleUri(this, uri_list[i])?.delete()
                             Log.d("del" , uri_list[i].toString())
                         }catch (e:Exception
                         ){
@@ -197,6 +177,9 @@ class hidden_images : AppCompatActivity() {
             }
 
     }
+
+
+
 }
 
 
