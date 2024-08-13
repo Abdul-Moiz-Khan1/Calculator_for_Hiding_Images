@@ -164,7 +164,6 @@ class hidden_images : AppCompatActivity() {
                         output->
                         input?.copyTo(output)
                         try{
-
                             DocumentFile.fromSingleUri(this, uri_list[i])?.delete()
                             Log.d("del" , uri_list[i].toString())
                         }catch (e:Exception
