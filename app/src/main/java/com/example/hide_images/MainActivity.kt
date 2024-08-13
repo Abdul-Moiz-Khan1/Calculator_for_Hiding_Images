@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
         window.statusBarColor = ContextCompat.getColor(this, R.color.black)
 
 
-
         val btn = findViewById<Button>(R.id.equal)
         btn.setOnClickListener{
             val code = findViewById<TextView>(R.id.calculation)

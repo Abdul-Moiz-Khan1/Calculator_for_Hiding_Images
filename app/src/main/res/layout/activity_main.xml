@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/background"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,6 +27,8 @@
             android:gravity="right"
             android:hint="Result"
             android:inputType="text"
+            android:textColor="@color/lightblack"
+            android:textColorHint="@color/lightblack"
             android:textSize="48sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -41,6 +44,8 @@
             android:gravity="right"
             android:hint="calculation"
             android:inputType="text"
+            android:textColor="@color/lightblack"
+            android:textColorHint="@color/lightblack"
             android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="@+id/result"
             app:layout_constraintHorizontal_bias="0.0"
