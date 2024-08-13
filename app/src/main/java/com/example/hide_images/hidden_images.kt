@@ -44,11 +44,8 @@ class hidden_images : AppCompatActivity() {
     private var read_permission: Boolean = false
     private var write_permission: Boolean = false
     private lateinit var select: Button
-    private var fetched:Boolean = false
     private var uri_list:ArrayList<Uri> = ArrayList()
-    private lateinit var secretKey:SecretKey
-    private lateinit var iv:ByteArray
-    private lateinit var dec_image:Bitmap
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hidden_images)
