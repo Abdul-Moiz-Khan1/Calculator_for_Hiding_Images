@@ -1,33 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:ems="10"
-        android:hint="type code"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:padding="20dp">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="@+id/editTextText"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="@+id/editTextText"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:background="@null"
+            android:ems="10"
+            android:gravity="right"
+            android:hint="Result"
+            android:inputType="text"
+            android:textSize="48sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/calculation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:ems="10"
+            android:gravity="right"
+            android:hint="calculation"
+            android:inputType="text"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="@+id/result"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/result"
+            app:layout_constraintTop_toBottomOf="@+id/result" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/calculation"
+
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout style="@style/Buttonrow">
+
+        <Button
+            style="@style/ButtonOpt"
+            android:onClick="ClearAll"
+            android:text="C" />
+
+        <Button
+            style="@style/ButtonOpt"
+            android:onClick="OperatorAction"
+            android:text="/" />
+
+        <Button
+            style="@style/ButtonOpt"
+            android:onClick="OperatorAction"
+            android:text="*" />
+
+        <Button
+            style="@style/ButtonOpt"
+            android:onClick="Backspace"
+            android:text="@string/backSpace" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/Buttonrow">
+
+        <Button
+            style="@style/ButtonNumber"
+            android:text="7" />
+
+        <Button
+            style="@style/ButtonNumber"
+            android:text="8" />
+
+        <Button
+            android:id="@+id/nine"
+            style="@style/ButtonNumber"
+            android:onClick="NumberAction"
+            android:text="9" />
+
+        <Button
+            style="@style/ButtonOpt"
+            android:onClick="OperatorAction"
+            android:text="-" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/Buttonrow">
+
+        <Button
+            style="@style/ButtonNumber"
+            android:text="4" />
+
+        <Button
+            style="@style/ButtonNumber"
+            android:text="5" />
+
+        <Button
+            style="@style/ButtonNumber"
+            android:text="6" />
+
+        <Button
+            style="@style/ButtonOpt"
+            android:onClick="OperatorAction"
+            android:text="+" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/Buttonrow">
+
+        <Button
+            style="@style/ButtonNumber"
+            android:text="1" />
+
+        <Button
+            style="@style/ButtonNumber"
+            android:text="2" />
+
+        <Button
+            style="@style/ButtonNumber"
+            android:text="3" />
+
+        <Button
+            style="@style/ButtonOpt"
+            android:text="%" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/Buttonrow">
+
+        <Button
+            style="@style/ButtonNumber"
+            android:text="." />
+
+        <Button
+            style="@style/ButtonNumber"
+            android:text="0" />
+
+        <Button
+            android:id="@+id/equal"
+            style="@style/ButtonOpt"
+            android:onClick="Equal"
+            android:text="=" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:id="@+id/main"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".MainActivity">-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/editTextText"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="64dp"-->
+<!--        android:ems="10"-->
+<!--        android:hint="Type code"-->
+<!--        android:inputType="text"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.497"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/button"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="32dp"-->
+<!--        android:text="Go to Vault"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/editTextText"-->
+<!--        app:layout_constraintHorizontal_bias="0.504"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/editTextText"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/editTextText" />-->
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->

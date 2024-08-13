@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Hide_images</string>
+    <string name="backSpace">⌫</string>
 </resources>

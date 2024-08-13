@@ -14,6 +14,7 @@ import android.provider.Settings
 import android.util.AndroidException
 import android.util.Log
 import android.widget.Button
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -49,9 +50,9 @@ class hidden_images : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hidden_images)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.black)
         Security.addProvider(BouncyCastleProvider())
 
-        val temp_image_uri:Uri = ("content://com.android.providers.media.documents/document/image%3A65").toUri()
         permissionlauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()){
             read_permission = it[android.Manifest.permission.READ_EXTERNAL_STORAGE] ?: read_permission
             write_permission = it[android.Manifest.permission.READ_EXTERNAL_STORAGE] ?: write_permission
@@ -66,8 +67,14 @@ class hidden_images : AppCompatActivity() {
         val unhide = findViewById<Button>(R.id.decrypt)
 
         hide.setOnClickListener{
-            hide_images()
-
+            if(uri_list.isEmpty()){
+                Toast.makeText(this, "Please Select Images" , Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            else{
+//                hide.text = ""
+                hide_images()
+            }
         }
         unhide.setOnClickListener{
             val intent =Intent(this , show_images::class.java)
@@ -166,6 +173,7 @@ class hidden_images : AppCompatActivity() {
                         try{
                             DocumentFile.fromSingleUri(this, uri_list[i])?.delete()
                             Log.d("del" , uri_list[i].toString())
+                            Toast.makeText(this , "${uri_list.size} images hidden",Toast.LENGTH_SHORT).show()
                         }catch (e:Exception
                         ){
                             Log.e("eRROR" , "dELETION error" , e)
