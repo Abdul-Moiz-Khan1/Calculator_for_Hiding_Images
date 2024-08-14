@@ -39,8 +39,6 @@ class MainActivity : AppCompatActivity() {
 
             if(code1 == "1313"){
                 startActivity(Intent(this,hidden_images::class.java))
-            }else{
-//                Toast.makeText(this , "Wrong Code", Toast.LENGTH_SHORT).show()
             }
         }
 
