@@ -25,6 +25,7 @@ import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.documentfile.provider.DocumentFile
+import com.example.hide_images.databinding.ActivityMainBinding
 import org.bouncycastle.jce.provider.BouncyCastleProvider
 import java.io.File
 import java.io.FileOutputStream
@@ -46,11 +47,13 @@ class hidden_images : AppCompatActivity() {
     private var write_permission: Boolean = false
     private lateinit var select: Button
     private var uri_list:ArrayList<Uri> = ArrayList()
+    private lateinit var binding:ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_hidden_images)
-        window.statusBarColor = ContextCompat.getColor(this, R.color.black)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.background)
         Security.addProvider(BouncyCastleProvider())
 
         permissionlauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()){

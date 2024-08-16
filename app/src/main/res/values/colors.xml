@@ -9,5 +9,12 @@
     <color name="button_background">#0D1925</color>
     <color name="Accent_color">#FD8209</color>
     <color name="items_back">#23262E</color>
+    <color name="purple">#653EAF</color>
+    <color name="green">#00C753</color>
+    <color name="video">#039785</color>
+    <color name="hide">#00B2FF</color>
+    <color name="lock">#3E5EAF</color>
+    <color name="cleaner">#FA8F06</color>
+    <color name="trash">#653EAF</color>
 
 </resources>
