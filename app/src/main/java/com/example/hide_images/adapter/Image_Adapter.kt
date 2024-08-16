@@ -2,7 +2,6 @@ package com.example.hide_images.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.provider.ContactsContract.CommonDataKinds.Im
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,9 +9,8 @@ import android.widget.ImageView
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.hide_images.Image
+import com.example.hide_images.display_image
 import com.example.hide_images.R
-import com.example.hide_images.show_images
 import java.io.File
 
 class Image_Adapter(private val context: Context ,private val images: Array<File>?) :
@@ -32,7 +30,7 @@ class Image_Adapter(private val context: Context ,private val images: Array<File
             val imageView = images?.get(position)
 
             holder.imageView.setOnClickListener{
-                val intent = Intent(context, Image::class.java)
+                val intent = Intent(context, display_image::class.java)
                 val uri = images?.get(position)?.toUri()
                 intent.putExtra("image",uri)
 //                intent.putEx

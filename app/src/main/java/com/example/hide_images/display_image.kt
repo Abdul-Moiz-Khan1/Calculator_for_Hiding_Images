@@ -8,7 +8,6 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.documentfile.provider.DocumentFile
@@ -16,11 +15,11 @@ import com.bumptech.glide.Glide
 import java.io.InputStream
 import java.io.OutputStream
 
-class Image : AppCompatActivity() {
+class display_image : AppCompatActivity() {
 //    @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_image)
+        setContentView(R.layout.activity_display_image)
     window.statusBarColor = ContextCompat.getColor(this, R.color.black)
 
         val restore_button = findViewById<ImageView>(R.id.restore)

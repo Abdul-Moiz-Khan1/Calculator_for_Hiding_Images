@@ -1,45 +1,29 @@
 package com.example.hide_images
 
 import android.app.Activity
-import android.content.ContentResolver
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
-import android.util.AndroidException
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.net.toUri
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.documentfile.provider.DocumentFile
-import com.example.hide_images.databinding.ActivityMainBinding
+import com.example.hide_images.databinding.ActivityMainMenuBinding
 import org.bouncycastle.jce.provider.BouncyCastleProvider
 import java.io.File
 import java.io.FileOutputStream
-import java.lang.reflect.Array
-import java.net.URI
-import java.nio.file.Files
-import java.security.SecureRandom
 import java.security.Security
-import javax.crypto.Cipher
-import javax.crypto.KeyGenerator
-import javax.crypto.SecretKey
-import javax.crypto.spec.IvParameterSpec
 
-class hidden_images : AppCompatActivity() {
+class Main_menu : AppCompatActivity() {
 
 
     private lateinit var permissionlauncher:ActivityResultLauncher<kotlin.Array<String>>
@@ -47,14 +31,17 @@ class hidden_images : AppCompatActivity() {
     private var write_permission: Boolean = false
     private lateinit var select: Button
     private var uri_list:ArrayList<Uri> = ArrayList()
-    private lateinit var binding:ActivityMainBinding
+    private lateinit var binding:ActivityMainMenuBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
         window.statusBarColor = ContextCompat.getColor(this, R.color.background)
         Security.addProvider(BouncyCastleProvider())
+
+        fileManager()
+        Images()
 
         permissionlauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()){
             read_permission = it[android.Manifest.permission.READ_EXTERNAL_STORAGE] ?: read_permission
@@ -85,6 +72,18 @@ class hidden_images : AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
+
+    private fun Images() {
+        binding.images.setOnClickListener{
+            Toast.makeText(this,"Clicked Images" , Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun fileManager() {
+        binding.fileManager.setOnClickListener{
+            Toast.makeText(this,"clicked File Manager",Toast.LENGTH_SHORT).show()
+        }
     }
 
 

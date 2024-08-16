@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".hidden_images">
+    tools:context=".Main_menu">
 
     <Toolbar
         android:id="@+id/toolbar"
@@ -85,7 +85,7 @@
         android:layout_height="0dp"
         android:orientation="horizontal"
         android:padding="20dp"
-        app:constraint_referenced_ids="cardView,cardView2,cardView3,cardView4,cardView5,cardView6,cardView7,cardView8"
+        app:constraint_referenced_ids="file_manager,cardView2,images,cardView4,cardView5,cardView6,cardView7,cardView8"
         app:flow_horizontalGap="20dp"
         app:flow_maxElementsWrap="2"
         app:flow_verticalGap="20dp"
@@ -96,13 +96,13 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/file_manager"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="20dp"
 
         app:cardCornerRadius="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/cardView3"
+        app:layout_constraintBottom_toTopOf="@+id/images"
         app:layout_constraintEnd_toStartOf="@+id/cardView2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/flow"
@@ -160,7 +160,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/cardView">
+        app:layout_constraintStart_toEndOf="@+id/file_manager">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -202,7 +202,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView3"
+        android:id="@+id/images"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/background"
@@ -213,7 +213,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/flow"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/cardView">
+        app:layout_constraintTop_toBottomOf="@+id/file_manager">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -264,7 +264,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/cardView3"
+        app:layout_constraintStart_toEndOf="@+id/images"
         app:layout_constraintTop_toBottomOf="@+id/cardView2">
 
         <LinearLayout
@@ -319,7 +319,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/flow"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/cardView3">
+        app:layout_constraintTop_toBottomOf="@+id/images">
 
         <LinearLayout
             android:layout_width="match_parent"

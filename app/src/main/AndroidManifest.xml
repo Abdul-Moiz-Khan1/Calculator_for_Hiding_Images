@@ -19,13 +19,16 @@
         android:theme="@style/Theme.Hide_images"
         tools:targetApi="31">
         <activity
-            android:name=".Image"
+            android:name=".Main_menu_Dirs.Images"
+            android:exported="false" />
+        <activity
+            android:name=".display_image"
             android:exported="false" />
         <activity
             android:name=".show_images"
             android:exported="false" />
         <activity
-            android:name=".hidden_images"
+            android:name=".Main_menu"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

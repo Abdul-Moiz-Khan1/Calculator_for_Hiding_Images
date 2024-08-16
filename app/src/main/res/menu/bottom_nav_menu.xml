@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:id="@+id/photos"
+    android:icon="@drawable/ic_images"
+    android:title="All Photos"
+    />
+    <item
+        android:id="@+id/albums"
+        android:title="Albums"
+        android:icon="@drawable/video"
+        />
+</menu>

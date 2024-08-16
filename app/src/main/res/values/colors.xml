@@ -16,5 +16,8 @@
     <color name="lock">#3E5EAF</color>
     <color name="cleaner">#FA8F06</color>
     <color name="trash">#653EAF</color>
+    <color name="floating_button">#E5770B</color>
+    <color name="bottom_nav">#0A141E</color>
+    <color name="bottom_nav_items">#5282FF</color>
 
 </resources>

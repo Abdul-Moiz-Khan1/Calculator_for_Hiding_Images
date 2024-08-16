@@ -5,18 +5,12 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.hide_images.databinding.ActivityMainBinding
 import net.objecthunter.exp4j.Expression
 import net.objecthunter.exp4j.ExpressionBuilder
-import java.io.File
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,7 +32,7 @@ class MainActivity : AppCompatActivity() {
             val code1 = code.text.toString()
 
             if(code1 == "1313"){
-                startActivity(Intent(this,hidden_images::class.java))
+                startActivity(Intent(this,Main_menu::class.java))
             }
         }
 
