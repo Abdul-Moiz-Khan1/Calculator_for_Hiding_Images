@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
@@ -78,12 +79,16 @@
         app:layout_constraintGuide_percent="0.93" />
 
     <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flow"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        app:flow_wrapMode="chain"
-        app:flow_maxElementsWrap="4"
+        android:orientation="horizontal"
+        android:padding="20dp"
         app:constraint_referenced_ids="cardView,cardView2,cardView3,cardView4,cardView5,cardView6,cardView7,cardView8"
+        app:flow_horizontalGap="20dp"
+        app:flow_maxElementsWrap="2"
+        app:flow_verticalGap="20dp"
+        app:flow_wrapMode="chain"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -91,61 +96,85 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:padding="20dp"
-        app:cardCornerRadius="10dp">
+
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView3"
+        app:layout_constraintEnd_toStartOf="@+id/cardView2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/flow"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/items_back"
-            android:orientation="vertical">
+            android:background="@drawable/item_back"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/camera" />
+                android:src="@drawable/file_manager" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textColor="@color/white"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:progress="70"
+                android:progressTint="@color/Accent_color"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@color/background"
         android:padding="20dp"
-        app:cardCornerRadius="10dp">
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cardView">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/items_back"
-            android:orientation="vertical">
+            android:background="@drawable/camera_back"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/camera" />
+                android:src="@drawable/camera" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textColor="@color/white"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -157,28 +186,37 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@color/background"
         android:padding="20dp"
-        app:cardCornerRadius="10dp">
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView5"
+        app:layout_constraintEnd_toStartOf="@+id/cardView4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/flow"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/items_back"
-            android:orientation="vertical">
+            android:background="@drawable/image_back"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/camera" />
+                android:src="@drawable/images" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textColor="@color/white"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -190,28 +228,36 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@color/background"
         android:padding="20dp"
-        app:cardCornerRadius="10dp">
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cardView3"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/items_back"
-            android:orientation="vertical">
+            android:background="@drawable/video_back"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/camera" />
+                android:src="@drawable/video" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textColor="@color/white"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -223,28 +269,37 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@color/background"
         android:padding="20dp"
-        app:cardCornerRadius="10dp">
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView7"
+        app:layout_constraintEnd_toStartOf="@+id/cardView6"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/flow"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/cardView3">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/items_back"
-            android:orientation="vertical">
+            android:background="@drawable/hide_back"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/camera" />
+                android:src="@drawable/hide" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textColor="@color/white"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -256,28 +311,36 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@color/background"
         android:padding="20dp"
-        app:cardCornerRadius="10dp">
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cardView5"
+        app:layout_constraintTop_toBottomOf="@+id/cardView4">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/items_back"
-            android:orientation="vertical">
+            android:background="@drawable/locked_back"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/camera" />
+                android:src="@drawable/locked" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textColor="@color/white"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -289,28 +352,37 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@color/background"
         android:padding="20dp"
-        app:cardCornerRadius="10dp">
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cardView8"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/flow"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/cardView5">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/items_back"
-            android:orientation="vertical">
+            android:background="@drawable/cleaner_back"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/camera" />
+                android:src="@drawable/cleaner" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textColor="@color/white"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -322,28 +394,37 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@color/background"
         android:padding="20dp"
-        app:cardCornerRadius="10dp">
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cardView7"
+        app:layout_constraintTop_toBottomOf="@+id/cardView6">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/items_back"
-            android:orientation="vertical">
+            android:background="@drawable/trash_back"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/camera" />
+                android:src="@drawable/trash" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textColor="@color/white"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
