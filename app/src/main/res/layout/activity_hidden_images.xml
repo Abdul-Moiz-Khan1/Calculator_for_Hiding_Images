@@ -5,7 +5,18 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".hidden_images">
+
+    <Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:title="Home"
+        android:titleMarginStart="30dp"
+        android:titleTextColor="@color/Accent_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button2"
@@ -37,5 +48,12 @@
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="@+id/encrpyt"
         app:layout_constraintTop_toBottomOf="@+id/encrpyt" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.07542579" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

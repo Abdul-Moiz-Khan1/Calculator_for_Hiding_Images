@@ -7,4 +7,6 @@
     <color name="lightblack">#93918D</color>
     <color name="background">#112232</color>
     <color name="button_background">#0D1925</color>
+    <color name="Accent_color">#FD8209</color>
+
 </resources>
