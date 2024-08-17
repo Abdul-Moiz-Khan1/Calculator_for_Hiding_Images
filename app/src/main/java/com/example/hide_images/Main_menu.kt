@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.documentfile.provider.DocumentFile
-import com.example.hide_images.Main_menu_Dirs.Images
+import com.example.hide_images.main_menu_acts.Images
 import com.example.hide_images.databinding.ActivityMainMenuBinding
 import org.bouncycastle.jce.provider.BouncyCastleProvider
 import java.io.File
@@ -187,7 +187,6 @@ class Main_menu : AppCompatActivity() {
             }
 
     }
-
 
 }
 

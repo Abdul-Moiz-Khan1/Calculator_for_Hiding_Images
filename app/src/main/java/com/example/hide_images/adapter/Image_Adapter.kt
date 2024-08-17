@@ -1,5 +1,6 @@
 package com.example.hide_images.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -26,6 +27,7 @@ class Image_Adapter(private val context: Context ,private val images: Array<File
         return images?.size ?: 0
     }
 
+        @SuppressLint("NotifyDataSetChanged")
         override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
             val imageView = images?.get(position)
 
@@ -33,8 +35,8 @@ class Image_Adapter(private val context: Context ,private val images: Array<File
                 val intent = Intent(context, display_image::class.java)
                 val uri = images?.get(position)?.toUri()
                 intent.putExtra("image",uri)
-//                intent.putEx
                 holder.itemView.context.startActivity(intent)
+                notifyDataSetChanged()
             }
             Glide.with(holder.imageView.context).load(imageView).into(holder.imageView)
         }

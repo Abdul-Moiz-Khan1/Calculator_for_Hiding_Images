@@ -5,13 +5,17 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import android.provider.DocumentsContract
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.documentfile.provider.DocumentFile
 import com.bumptech.glide.Glide
+import com.example.hide_images.adapter.Image_Adapter
+import java.io.File
 import java.io.InputStream
 import java.io.OutputStream
 
@@ -48,11 +52,17 @@ class display_image : AppCompatActivity() {
                         copyStream(inputStream, outputStream)
                     }
                 }
+                try {
+                    val deletefile = File(imageuri!!.path!!)
+                    deletefile.delete()
+                    Toast.makeText(this, "Image restored to Downloads.", Toast.LENGTH_SHORT).show()
+                    finish()
 
-                // Delete the original image after moving
-                DocumentFile.fromSingleUri(this , imageuri!!)!!.delete()
-                Toast.makeText(this, "Image Restored to Downloads" ,Toast.LENGTH_SHORT).show()
-            } ?: run {
+                } catch (e:Exception) {
+                    Log.e("ERROR", "ERROR WHILE DELETING", e)
+                    Toast.makeText(this, "An error occurred while deleting the image.", Toast.LENGTH_SHORT).show()
+                }
+                 } ?: run {
                 Toast.makeText(this , "Failed to move the image to Downloads.",Toast.LENGTH_SHORT).show()
             }
         }

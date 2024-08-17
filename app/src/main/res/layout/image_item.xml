@@ -1,6 +1,15 @@
-<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/imageView"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="wrap_content"
+    android:layout_height="300dp"
+    android:background="@null"
+    android:backgroundTint="@color/background"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="20dp">
+<ImageView  android:id="@+id/imageView"
     android:layout_width="wrap_content"
     android:layout_height="300dp"
     android:layout_margin="4dp"
     android:scaleType="centerCrop" />
+
+</androidx.cardview.widget.CardView>
