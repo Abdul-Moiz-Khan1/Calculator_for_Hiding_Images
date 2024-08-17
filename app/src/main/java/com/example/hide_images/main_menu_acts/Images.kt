@@ -29,7 +29,7 @@ import java.io.FileOutputStream
 class Images : AppCompatActivity() {
     private var read_permission: Boolean = false
     private var write_permission: Boolean = false
-    private var uri_list:ArrayList<Uri> = ArrayList()
+    private var uri_list: ArrayList<Uri> = ArrayList()
 
     private val imagePath =
         File("/storage/emulated/0/Android/data/com.example.hide_images/files/.app_images")
@@ -61,7 +61,7 @@ class Images : AppCompatActivity() {
             binding.noItem.visibility = View.VISIBLE
             binding.noItemText.visibility = View.VISIBLE
         } else {
-            binding.recView.layoutManager = GridLayoutManager(this, 2)
+            binding.recView.layoutManager = GridLayoutManager(this, 3)
             val imageFiles =
                 imagePath.listFiles { file -> file.extension == "jpg" || file.extension == "png" || file.extension == "jpeg" }
             binding.recView.adapter = Image_Adapter(this, imageFiles)
@@ -76,7 +76,8 @@ class Images : AppCompatActivity() {
             type = "image/*"
             putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
         }
-        startActivityForResult(intent,1001)
+        startActivityForResult(intent, 1001)
+
     }
 
     private fun checkpermissions() {
@@ -124,11 +125,10 @@ class Images : AppCompatActivity() {
                     for (i in 0 until clip.itemCount) {
                         Log.d("uris", clip.getItemAt(i).uri.toString())
                         uri_list.add(clip.getItemAt(i).uri)
-                        if(uri_list.size == intent_data.clipData!!.itemCount){
+                        if (uri_list.size == intent_data.clipData!!.itemCount) {
                             hide_images()
                         }
                     }
-
                     Log.d("count?", clip.itemCount.toString())
                 } else {
                     intent_data.data?.let { uri_list.add(it) }
@@ -142,27 +142,28 @@ class Images : AppCompatActivity() {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun hide_images() {
+        binding.recView.adapter!!.notifyDataSetChanged()
         val newDir = File(getExternalFilesDir(null), ".app_images")
-        if(!newDir.exists()){
-            Log.d("dirs" , "making new ")
+        if (!newDir.exists()) {
+            Log.d("dirs", "making new ")
             newDir.mkdirs()
         }
         Log.d("loop", uri_list.size.toString())
-        for(i in 0 until uri_list.size){
+        for (i in 0 until uri_list.size) {
             val input_stram = contentResolver.openInputStream(uri_list[i])
-            val newFile = File(newDir , "image_${System.currentTimeMillis()}.jpg")
+            val newFile = File(newDir, "image_${System.currentTimeMillis()}.jpg")
             Log.d("loop", i.toString())
-            input_stram.use { input->
-                FileOutputStream(newFile).use {
-                        output->
+            input_stram.use { input ->
+                FileOutputStream(newFile).use { output ->
                     input?.copyTo(output)
-                    try{
+                    try {
                         DocumentFile.fromSingleUri(this, uri_list[i])?.delete()
-                        Log.d("del" , uri_list[i].toString())
+                        Log.d("del", uri_list[i].toString())
 //                        Toast.makeText(this , "${uri_list.size} images hidden", Toast.LENGTH_SHORT).show()
-                    }catch (e:Exception
-                    ){
-                        Log.e("eRROR" , "dELETION error" , e)
+                    } catch (
+                        e: Exception
+                    ) {
+                        Log.e("eRROR", "dELETION error", e)
                     }
                 }
             }

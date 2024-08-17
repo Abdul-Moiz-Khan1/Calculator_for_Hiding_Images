@@ -1,6 +1,7 @@
 package com.example.hide_images
 
 import android.content.ContentValues
+import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -57,6 +58,8 @@ class display_image : AppCompatActivity() {
                     deletefile.delete()
                     Toast.makeText(this, "Image restored to Downloads.", Toast.LENGTH_SHORT).show()
                     finish()
+                    startActivity(Intent(this,Main_menu::class.java))
+
 
                 } catch (e:Exception) {
                     Log.e("ERROR", "ERROR WHILE DELETING", e)
