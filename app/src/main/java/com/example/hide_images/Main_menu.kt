@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.documentfile.provider.DocumentFile
+import com.example.hide_images.Main_menu_Dirs.Images
 import com.example.hide_images.databinding.ActivityMainMenuBinding
 import org.bouncycastle.jce.provider.BouncyCastleProvider
 import java.io.File
@@ -40,8 +41,13 @@ class Main_menu : AppCompatActivity() {
         window.statusBarColor = ContextCompat.getColor(this, R.color.background)
         Security.addProvider(BouncyCastleProvider())
 
-        fileManager()
-        Images()
+        binding.fileManager.setOnClickListener{
+            fileManager()
+        }
+        binding.images.setOnClickListener{
+            Image()
+        }
+
 
         permissionlauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()){
             read_permission = it[android.Manifest.permission.READ_EXTERNAL_STORAGE] ?: read_permission
@@ -74,16 +80,12 @@ class Main_menu : AppCompatActivity() {
 
     }
 
-    private fun Images() {
-        binding.images.setOnClickListener{
-            Toast.makeText(this,"Clicked Images" , Toast.LENGTH_SHORT).show()
-        }
+    private fun Image() {
+        startActivity(Intent(this,Images::class.java))
     }
 
     private fun fileManager() {
-        binding.fileManager.setOnClickListener{
             Toast.makeText(this,"clicked File Manager",Toast.LENGTH_SHORT).show()
-        }
     }
 
 
