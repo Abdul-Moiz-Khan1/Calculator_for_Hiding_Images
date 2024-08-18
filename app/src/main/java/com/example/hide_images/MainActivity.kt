@@ -25,17 +25,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         window.statusBarColor = ContextCompat.getColor(this, R.color.background)
 
-
         val btn = findViewById<Button>(R.id.equal)
         btn.setOnClickListener{
             val code = findViewById<TextView>(R.id.calculation)
             val code1 = code.text.toString()
-
             if(code1 == "1313"){
                 startActivity(Intent(this,Main_menu::class.java))
             }
         }
-
     }
     fun ClearAll(view: View) {
         binding.result.text = ""
@@ -53,7 +50,6 @@ class MainActivity : AppCompatActivity() {
             Log.e("Last Char Error" , ex.toString())
         }
     }
-
 
     fun NumberAction(view: View) {
         if (view is Button) {
