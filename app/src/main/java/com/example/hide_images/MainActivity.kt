@@ -38,7 +38,6 @@ class MainActivity : AppCompatActivity() {
         binding.result.text = ""
         binding.calculation.text = ""
     }
-
     fun Backspace(view: View) {
         binding.calculation.text = binding.calculation.text.toString().dropLast(1)
         try {
