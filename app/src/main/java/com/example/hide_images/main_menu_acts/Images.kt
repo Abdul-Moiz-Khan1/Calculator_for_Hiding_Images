@@ -139,7 +139,7 @@ class Images : AppCompatActivity() {
             Log.d("null?", resultCode.toString())
         }
     }
-
+//new
     @SuppressLint("NotifyDataSetChanged")
     private fun hide_images() {
         binding.recView.adapter!!.notifyDataSetChanged()
