@@ -14,7 +14,7 @@ import com.example.hide_images.display_image
 import com.example.hide_images.R
 import java.io.File
 
-class Image_Adapter(private val context: Context ,private val images: Array<File>?) :
+class Image_Adapter(private val context: Context, private val images: Array<File>?) :
     RecyclerView.Adapter<Image_Adapter.ImageViewHolder>() {
 
 
@@ -27,21 +27,21 @@ class Image_Adapter(private val context: Context ,private val images: Array<File
         return images?.size ?: 0
     }
 
-        @SuppressLint("NotifyDataSetChanged")
-        override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-            val imageView = images?.get(position)
+    @SuppressLint("NotifyDataSetChanged")
+    override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
+        val imageView = images?.get(position)
 
-            holder.imageView.setOnClickListener{
-                val intent = Intent(context, display_image::class.java)
-                val uri = images?.get(position)?.toUri()
-                intent.putExtra("image",uri)
-                holder.itemView.context.startActivity(intent)
-                notifyDataSetChanged()
-            }
-            Glide.with(holder.imageView.context).load(imageView).into(holder.imageView)
+        holder.imageView.setOnClickListener {
+            val intent = Intent(context, display_image::class.java)
+            val uri = images?.get(position)?.toUri()
+            intent.putExtra("image", uri)
+            holder.itemView.context.startActivity(intent)
+            notifyDataSetChanged()
         }
+        Glide.with(holder.imageView.context).load(imageView).into(holder.imageView)
+    }
 
-    class ImageViewHolder(view: View):RecyclerView.ViewHolder(view) {
+    class ImageViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val imageView: ImageView = view.findViewById(R.id.imageView)
 
     }
