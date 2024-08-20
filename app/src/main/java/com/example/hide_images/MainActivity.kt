@@ -26,18 +26,20 @@ class MainActivity : AppCompatActivity() {
         window.statusBarColor = ContextCompat.getColor(this, R.color.background)
 
         val btn = findViewById<Button>(R.id.equal)
-        btn.setOnClickListener{
+        btn.setOnClickListener {
             val code = findViewById<TextView>(R.id.calculation)
             val code1 = code.text.toString()
-            if(code1 == "1313"){
-                startActivity(Intent(this,Main_menu::class.java))
+            if (code1 == "1313") {
+                startActivity(Intent(this, Main_menu::class.java))
             }
         }
     }
+
     fun ClearAll(view: View) {
         binding.result.text = ""
         binding.calculation.text = ""
     }
+
     fun Backspace(view: View) {
         binding.calculation.text = binding.calculation.text.toString().dropLast(1)
         try {
@@ -45,8 +47,8 @@ class MainActivity : AppCompatActivity() {
             if (lastchar.isDigit()) {
                 onEqual()
             }
-        }catch (ex : Exception){
-            Log.e("Last Char Error" , ex.toString())
+        } catch (ex: Exception) {
+            Log.e("Last Char Error", ex.toString())
         }
     }
 
@@ -76,15 +78,15 @@ class MainActivity : AppCompatActivity() {
         onEqual()
     }
 
-    fun onEqual(){
-        if(decimal && operator){
+    fun onEqual() {
+        if (decimal && operator) {
             val txt = binding.calculation.text.toString()
             expression = ExpressionBuilder(txt).build()
-            try{
+            try {
                 val resultfin = expression.evaluate()
                 binding.result.text = resultfin.toString()
-            }catch (ex: ArithmeticException){
-                Log.e("Evaluation Error" , ex.toString())
+            } catch (ex: ArithmeticException) {
+                Log.e("Evaluation Error", ex.toString())
                 binding.result.text = "Error"
 
             }
